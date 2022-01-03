@@ -1,14 +1,10 @@
 pipeline {
     agent any
-    tools {
-        jdk 'jdk'
-        maven '3.8.3'
 
-    }
     stages {
         stage("build project") {
             steps {
-                //  git 'https://github.com/muharremkoc/spring-boot-jenkins-demo.git'
+                  git 'https://github.com/muharremkoc/spring-boot-jenkins-demo.git'
                 echo "JAVA_HOME"
                 sh 'java -version'
                 echo "MAVEN_HOME"
