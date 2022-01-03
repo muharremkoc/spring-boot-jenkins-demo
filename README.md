@@ -13,9 +13,11 @@ docker-compose up -d
 
 <img width="577" alt="IbhDD" src="https://user-images.githubusercontent.com/80245013/147904794-be1f1319-677a-4a25-b531-92f148d28dab.png">
 
-- If you haven't got a jenkins account,Please open the docker desktop and docker container, Copy your Account Code !
+- If you haven't got a jenkins account,Please open the docker desktop and docker container, Copy your Account Code!
 
-[Screenshot_1](https://user-images.githubusercontent.com/80245013/147904853-a009bd4d-3f15-45e7-b1f8-60f72c34faf0.png)
+![Screenshot_1](https://user-images.githubusercontent.com/80245013/147904893-3c8eade7-4f13-4f66-a084-0f512c468af3.png)
+
+
 
 
 
