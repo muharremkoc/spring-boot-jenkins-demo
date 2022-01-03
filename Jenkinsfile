@@ -3,19 +3,20 @@ pipeline {
 
 
     stages {
-        stage("build project") {
-            steps {
-                  git 'https://github.com/muharremkoc/spring-boot-jenkins-demo.git'
-                echo "JAVA_HOME"
-                sh 'java -version'
-                echo "MAVEN_HOME"
-                sh  './mvnw clean install -DskipTests'
-                echo 'building project...'
-                sh './mvnw compile'
-                sh './mvnw package'
-                //sh "mvn test"
-                sh './mvnw clean install'
+         stage('Build') {
+               agent {
+                 docker {
+                   image 'maven:3.8.1-adoptopenjdk-11'
+                   args '-v $HOME/.m2:/root/.m2'
+                   reuseNode true
+                 }
+               }
+               steps {
+                 sh """
+                    mvn compile jib:dockerBuild
+                    mvn clean package
+                     """
+               }
             }
-        }
     }
 }
