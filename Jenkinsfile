@@ -1,10 +1,7 @@
 pipeline {
     agent any
-        tools
-        {
-        java '11.0.10'
-        mvn '3.8.3'
-        }
+
+
     stages {
         stage("build project") {
             steps {
