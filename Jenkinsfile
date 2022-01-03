@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage("build project") {
             steps {
-                //  git 'https://github.com/muharremkoc/spring-boot-jenkins-demo.git'
+                  git 'https://github.com/muharremkoc/spring-boot-jenkins-demo.git'
                 echo "JAVA_HOME"
                 sh 'java -version'
                 echo "MAVEN_HOME"
