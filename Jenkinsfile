@@ -9,10 +9,10 @@ pipeline {
                 echo "JAVA_HOME"
                 sh 'java -version'
                 echo "MAVEN_HOME"
-                sh 'mvn -version'
+                sh  "./mvnw clean install -DskipTests"
                 echo 'building project...'
-                sh "mvn compile"
-                sh "mvn package"
+                sh "./mvnw compile"
+                sh "./mvnw package"
                 //sh "mvn test"
                 sh "mvn clean install"
             }
