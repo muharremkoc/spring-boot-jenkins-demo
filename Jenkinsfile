@@ -9,12 +9,12 @@ pipeline {
                 echo "JAVA_HOME"
                 sh 'java -version'
                 echo "MAVEN_HOME"
-                sh  "./mvnw clean install -DskipTests"
+                sh  './mvnw clean install -DskipTests'
                 echo 'building project...'
-                sh "./mvnw compile"
-                sh "./mvnw package"
+                sh './mvnw compile'
+                sh './mvnw package'
                 //sh "mvn test"
-                sh "mvn clean install"
+                sh './mvnw clean install'
             }
         }
     }
