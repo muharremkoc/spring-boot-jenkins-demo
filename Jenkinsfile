@@ -1,4 +1,3 @@
-
 /*
 pipeline {
     agent any
@@ -34,35 +33,35 @@ pipeline {
     }
 }
  */
-pipeline{
+pipeline {
+  environment {
+    registry = "https://hub.docker.com/r/mhrrmdockerhub/spring-boot-jenkins"
+    registryCredential = 'dockerhub_id'
 
-	agent any
-
-	environment {
-		DOCKERHUB_CREDENTIALS=credentials('jenkinscreds')
-	}
-
-	stages {
-
-	    stage('gitclone') {
-
-			steps {
-				git 'https://github.com/muharremkoc/spring-boot-jenkins-demo.git'
-			}
-		}
-
-		stage('Build') {
-
-			steps {
-				sh 'docker build -t mhrrmdockerhub/spring-boot-jenkins:tagname .'
-			}
-		}
-
-		stage('Push') {
-
-			steps {
-				sh 'docker push mhrrmdockerhub/spring-boot-jenkins:tagname'
-			}
-		}
-	}
+    dockerImage = ''
+  }
+  agent any
+  stages {
+    stage('Cloning our Git') {
+      steps {
+        git 'https://github.com/muharremkoc/spring-boot-jenkins-demo.git'
+      }
+    }
+    stage('Building our image') {
+      steps {
+        script {
+          dockerImage = docker.build registry + ":$BUILD_NUMBER"
+        }
+      }
+    }
+    stage('Deploy our image') {
+      steps {
+        script {
+          docker.withRegistry('', registryCredential) {
+            dockerImage.push()
+          }
+        }
+      }
+    }
+  }
 }
