@@ -20,9 +20,6 @@ pipeline {
             reuseNode true
           }
         }
-        steps {
-          sh  "mvn clean compile jib: build"
-        }
       }
 
       stage('Docker Publish') {
