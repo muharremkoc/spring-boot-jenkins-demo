@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        IMAGE_REGISTRY = 'hub.docker.com/repository/docker/mhrrmdockerhub/spring-boot-jenkins'
+        IMAGE_REGISTRY = 'hub.docker.com/r/mhrrmdockerhub/spring-boot-jenkins'
         IMAGE_VERSION = 'latest'
         IMAGE_REGISTRY_CREDENTIAL = 'jenkinscreds'
         DOCKER_REGISTRY_URL = ""
@@ -24,7 +24,7 @@ pipeline {
 
         stage('Docker Publish') {
             steps {
-                    withDockerRegistry([credentialsId: "${IMAGE_REGISTRY_CREDENTIAL}", url: "hub.docker.com/repository/docker/mhrrmdockerhub"]) {
+                    withDockerRegistry([credentialsId: "${IMAGE_REGISTRY_CREDENTIAL}", url: "hub.docker.com/u/mhrrmdockerhub"]) {
                         sh "docker push ${IMAGE_REGISTRY}:${IMAGE_VERSION}"
                     }
             }
