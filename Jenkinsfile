@@ -15,10 +15,12 @@ pipeline {
           reuseNode true
         }
       }
-      steps {
-        sh """
-        mvn compile jib: dockerBuild """
-      }
+           steps {
+             sh """
+                mvn compile jib:dockerBuild
+                 """
+           }
+
     }
 
     stage('Docker Publish') {
