@@ -35,7 +35,7 @@ pipeline {
  */
 pipeline {
   environment {
-    registry = "https://hub.docker.com/r/mhrrmdockerhub/spring-boot-jenkins"
+    registry = "https://hub.docker.com/repository/docker/mhrrmdockerhub/spring-boot-jenkins"
     registryCredential = 'dockerhub_id'
     IMAGE_VERSION = 'latest'
     dockerImage = ''
