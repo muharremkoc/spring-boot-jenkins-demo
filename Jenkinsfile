@@ -26,7 +26,7 @@ pipeline {
     stage('Docker Publish') {
       steps {
         sh "docker login -u mhrrmdockerhub -p muho145358."
-        sh "docker push registry.hub.docker.com/mhrrmdockerhub/spring-boot-jenkins:latest"
+        sh "sudo docker push registry.hub.docker.com/mhrrmdockerhub/spring-boot-jenkins:latest"
       }
     }
 
