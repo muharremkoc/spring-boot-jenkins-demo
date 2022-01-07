@@ -1,10 +1,11 @@
 pipeline {
-  environment {
-    registry = "mhrrmdockerhub/spring-boot-jenkins"
-    registryCredential = 'dockerhub_id'
-    dockerImage = ''
-  }
-  agent any
+    agent any
+    environment {
+        IMAGE_REGISTRY = '  mhrrmdockerhub/spring-boot-jenkins'
+        IMAGE_VERSION = 'latest'
+        IMAGE_REGISTRY_CREDENTIAL = 'dockerhub_id'
+        DOCKER_REGISTRY_URL = ""
+    }
   stages {
     stage('Cloning our Git') {
       steps {
