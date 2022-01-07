@@ -38,7 +38,7 @@ stages {
         stage('Deploy Docker-compose') {
              steps {
                sh "docker-compose -f /home/jenkins/docker-compose.yml stop "
-               withDockerRegistry([credentialsId: "${IMAGE_REGISTRY_CREDENTIAL}", url: "https://hub.docker.com/mhrrmdockerhub"]) {
+               withDockerRegistry([credentialsId: "${IMAGE_REGISTRY_CREDENTIAL}", url: "https://hub.docker.com/u/mhrrmdockerhub"]) {
                        sh "docker-compose -f /home/jenkins/docker-compose.yml pull"
                }
                dir('/home/jenkins') {
