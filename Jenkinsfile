@@ -25,14 +25,14 @@ pipeline {
 
     stage('Docker Publish') {
       steps {
-        sh "docker login -u mhrrmdockerhub -p muho145358. registry.hub.docker.com"
+        sh "docker login -u "" -p "" registry.hub.docker.com"
         sh " docker push registry.hub.docker.com/mhrrmdockerhub/spring-boot-jenkins:latest"
       }
     }
 
     stage('Deploy Docker-compose') {
       steps {
-        sh "docker login -u mhrrmdockerhub -p muho145358."
+        sh "docker login -u "" -p """
         sh "docker-compose -f /home/jenkins/docker-compose.yml stop"
         sh "docker-compose -f /home/jenkins/docker-compose.yml pull "
         dir('/home/jenkins') {
