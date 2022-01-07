@@ -61,14 +61,12 @@ pipeline {
                  """
            }
         }
-    stage('Deploy our image') {
-      steps {
-        script {
-          docker.withRegistry('', registryCredential) {
-            dockerImage.push()
-          }
+        stage('Docker Publish') {
+            steps {
+                    withDockerRegistry([credentialsId: "${IMAGE_REGISTRY_CREDENTIAL}", url: "https://hub.docker.com/repository/docker/mhrrmdockerhub"]) {
+                        sh "docker push ${IMAGE_REGISTRY}:${IMAGE_VERSION}"
+                    }
+            }
         }
-      }
-    }
   }
 }
