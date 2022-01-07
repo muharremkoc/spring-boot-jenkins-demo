@@ -16,10 +16,8 @@ pipeline {
         }
       }
       steps {
-        sh ""
-        "
-        mvn compile jib: dockerBuild ""
-        "
+        sh """
+        mvn compile jib: dockerBuild """
       }
     }
 
