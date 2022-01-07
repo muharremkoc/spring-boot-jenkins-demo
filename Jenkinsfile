@@ -1,3 +1,5 @@
+
+/*
 pipeline {
     agent any
     environment {
@@ -24,10 +26,43 @@ pipeline {
 
         stage('Docker Publish') {
             steps {
-                    withDockerRegistry([credentialsId: "${IMAGE_REGISTRY_CREDENTIAL}", url: "https://hub.docker.com/u/mhrrmdockerhub"]) {
+                    withDockerRegistry([credentialsId: "${IMAGE_REGISTRY_CREDENTIAL}", url: "https://hub.docker.com/repository/docker/mhrrmdockerhub"]) {
                         sh "docker push ${IMAGE_REGISTRY}:${IMAGE_VERSION}"
                     }
             }
         }
     }
+}
+ */
+pipeline{
+
+	agent any
+
+	environment {
+		DOCKERHUB_CREDENTIALS=credentials('jenkinscreds')
+	}
+
+	stages {
+
+	    stage('gitclone') {
+
+			steps {
+				git 'https://github.com/muharremkoc/spring-boot-jenkins-demo.git'
+			}
+		}
+
+		stage('Build') {
+
+			steps {
+				sh 'docker build -t mhrrmdockerhub/spring-boot-jenkins:tagname .'
+			}
+		}
+
+		stage('Push') {
+
+			steps {
+				sh 'docker push mhrrmdockerhub/spring-boot-jenkins:tagname'
+			}
+		}
+	}
 }
