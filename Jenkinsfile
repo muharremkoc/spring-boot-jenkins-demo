@@ -20,8 +20,7 @@ pipeline {
           }
         }
         steps {
-          sh  "mvn compile jib: dockerBuild"
-
+          sh  "mvn clean compile jib: dockerBuild"
         }
       }
 
